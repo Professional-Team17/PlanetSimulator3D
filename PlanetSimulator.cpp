@@ -1,10 +1,11 @@
-#include <SDL2/SDL.h>
 #include <iostream>
 #include <list>
 #include <cstdlib>
 #include <ctime>
 #include <cmath>
-#include <panda.h>
+#include "panda.h"
+#include "pandaFramework.h"
+#include "pandaSystem.h"
 
 const double SK = 0.23873241463784;
 const double G = 0.1;
@@ -14,9 +15,6 @@ const int GENERATE_HEIGHT = 960;
 const int GENERATE_LENTH = 960;
 const int BODYNUMS = 800;
 const int MAXLENGTH = 100;
-
-SDL_Window *wnd = NULL;
-SDL_Renderer *ren = NULL;
 
 double cbrt(double x)
 {
@@ -153,12 +151,23 @@ int main(int argc, char *argv[])
 {
 	srand(time(NULL));
 	Body bodys[BODYNUMS];
+
+	PandaFramework framework;
+    framework.open_framework(argc, argv);
+
+	framework.set_window_title("PlanetSimulator3D");
+    WindowFramework *window = framework.open_window();
+
+
+
+	
+	
 	while ()
 	{
-		for (i = 0; i < BODYNUMS; i++)
+		for (int i = 0; i < BODYNUMS; i++)
 		{
 			bodys[i].move();
-			for (j = 0; j < BODYNUMS; j++)
+			for (int j = 0; j < BODYNUMS; j++)
 			{
 				if (i != j) Body::gravitation(bodys[i], bodys[j]);
 			}
@@ -166,6 +175,7 @@ int main(int argc, char *argv[])
 		}
 	}
 
-
+	framework.main_loop();
+    framework.close_framework();
 	return 0;
 }
