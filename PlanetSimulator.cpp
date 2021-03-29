@@ -3,9 +3,17 @@
 #include <cstdlib>
 #include <ctime>
 #include <cmath>
-#include "panda.h"
-#include "pandaFramework.h"
-#include "pandaSystem.h"
+#include<OgreRoot.h>
+#include<OgreRenderSystem.h>
+#include<OgreRenderWindow.h>
+#include<OgreConfigFile.h>
+#include<OgreResourceGroupManager.h>
+#include<OgreLogManager.h>
+#include<OgreViewport.h>
+#include<OgreSceneManager.h>
+#include<OgreCamera.h>
+#include<OgreLight.h>
+#include<OgreEntity.h>
 
 const double SK = 0.23873241463784;
 const double G = 0.1;
@@ -152,16 +160,9 @@ int main(int argc, char *argv[])
 	srand(time(NULL));
 	Body bodys[BODYNUMS];
 
-	PandaFramework framework;
-    framework.open_framework(argc, argv);
-
-	framework.set_window_title("PlanetSimulator3D");
-    WindowFramework *window = framework.open_window();
-
-
 
 	
-	
+	/*
 	while ()
 	{
 		for (int i = 0; i < BODYNUMS; i++)
@@ -174,8 +175,6 @@ int main(int argc, char *argv[])
 			bodys[i].show();
 		}
 	}
-
-	framework.main_loop();
-    framework.close_framework();
+*/
 	return 0;
 }
