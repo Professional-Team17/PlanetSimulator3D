@@ -3,17 +3,6 @@
 #include <cstdlib>
 #include <ctime>
 #include <cmath>
-#include<OgreRoot.h>
-#include<OgreRenderSystem.h>
-#include<OgreRenderWindow.h>
-#include<OgreConfigFile.h>
-#include<OgreResourceGroupManager.h>
-#include<OgreLogManager.h>
-#include<OgreViewport.h>
-#include<OgreSceneManager.h>
-#include<OgreCamera.h>
-#include<OgreLight.h>
-#include<OgreEntity.h>
 
 const double SK = 0.23873241463784;
 const double G = 0.1;
@@ -161,7 +150,6 @@ int main(int argc, char *argv[])
 	Body bodys[BODYNUMS];
 
 
-	
 	/*
 	while ()
 	{
