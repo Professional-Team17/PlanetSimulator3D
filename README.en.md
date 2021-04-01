@@ -2,7 +2,7 @@
 
 #### Description
 A cross-platform 3D physical simulator of celestial motion for fun.
-This program is written in C++, powered by panda3D.
+This program is written in C++, powered by cocos2d-x.
 
 #### Instructions
 
