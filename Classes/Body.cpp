@@ -1,4 +1,5 @@
 #include "Body.h"
+
 double _cbrt(double x)
 {
 	double x0 = 1, x1 = x0 - (x0 * x0 * x0 - x) / (3 * x0 * x0);
@@ -19,15 +20,15 @@ Body::Body()
 	vx = (rand() & 1 ? 1 : -1) * (rand() % 401 / 200.);
 	vy = (rand() & 1 ? 1 : -1) * (rand() % 401 / 200.);
 	vz = (rand() & 1 ? 1 : -1) * (rand() % 401 / 200.);
-	red = rand() % 256;
-	green = rand() % 256;
-	blue = rand() % 256;
 	for (int i = 0; i < MAXLENGTH; i++)
 	{
 		listx.push_back(x);
 		listy.push_back(y);
 		listz.push_back(z);
 	}
+	planet = Build_Planet();
+	planet->setPosition3D(Vec3(x, y, z));
+	scene->addChild(planet);
 }
 void Body::move()
 {
@@ -48,13 +49,14 @@ void Body::show()
 {
 	if (m > 0)
 	{
+		planet->runAction(MoveTo::create(T, Vec3(x, y, z)));
 		std::list<int>::iterator itx1 = listx.begin(), itx2 = itx1, ity1 = listy.begin(), ity2 = ity1, itz1 = listz.begin(), itz2 = itz1;
 		++itx2;
 		++ity2;
 		++itz2;
 		while (itx2 != listx.end())
 		{
-			//////
+			
 			++itx1;
 			++itx2;
 			++ity1;
@@ -91,6 +93,7 @@ void Body::gravitation(Body& a, Body& b)
 				b.vx = 0;
 				b.vy = 0;
 				b.vz = 0;
+				scene->removeChild(b.planet);
 			}
 			else
 			{
@@ -104,7 +107,13 @@ void Body::gravitation(Body& a, Body& b)
 				a.vx = 0;
 				a.vy = 0;
 				a.vz = 0;
+				scene->removeChild(a.planet);
 			}
 		}
 	}
+}
+Sprite3D* Body::Build_Planet() {
+	auto sprite = Sprite3D::create("Sprite3DTest/sphere.c3b");
+	sprite->setScale(r/ 100 / sprite->getContentSize().width);
+	return sprite;
 }

@@ -1,5 +1,8 @@
 #pragma once
 #include<list>
+#include"cocos2d.h"
+USING_NS_CC;
+
 const double SK = 0.23873241463784;
 const double G = 0.1;
 const double T = 0.5;
@@ -16,6 +19,8 @@ public:
 	void move();
 	void show();
 	static void gravitation(Body& a, Body& b);
+	Sprite3D* Build_Planet();
+	auto seq = Sequence::create(nullptr);
 private:
 	double x;
 	double y;
@@ -25,10 +30,8 @@ private:
 	double vx;
 	double vy;
 	double vz;
-	unsigned int red;
-	unsigned int green;
-	unsigned int blue;
 	std::list<int> listx;
 	std::list<int> listy;
 	std::list<int> listz;
+	Sprite3D* planet;
 };
