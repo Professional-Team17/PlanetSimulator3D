@@ -23,6 +23,7 @@
  ****************************************************************************/
 
 #include "mainScene.h"
+#include "Body.h"
 
 USING_NS_CC;
 
@@ -78,7 +79,7 @@ bool PlanetSimulator::init()
     auto menu = Menu::create(closeItem, NULL);
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
-
+    /*
     /////////////////////////////
     // 3. add your codes below...
 
@@ -113,6 +114,23 @@ bool PlanetSimulator::init()
 
         // add the sprite as a child to this layer
         this->addChild(sprite, 0);
+    }
+    */
+    srand(time(NULL));
+    Body bodys[BODYNUMS];
+    // run
+    
+    while (1)
+    {
+        for (int i = 0; i < BODYNUMS; i++)
+        {
+            bodys[i].move();
+            for (int j = 0; j < BODYNUMS; j++)
+            {
+                if (i != j) Body::gravitation(bodys[i], bodys[j]);
+            }
+            bodys[i].show();
+        }
     }
     return true;
 }

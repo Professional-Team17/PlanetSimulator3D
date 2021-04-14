@@ -20,7 +20,7 @@ public:
 	void show();
 	static void gravitation(Body& a, Body& b);
 	Sprite3D* Build_Planet();
-	auto seq = Sequence::create(nullptr);
+	Sequence* seq = Sequence::create(nullptr);
 private:
 	double x;
 	double y;

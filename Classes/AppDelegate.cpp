@@ -23,7 +23,7 @@
  ****************************************************************************/
 
 #include "AppDelegate.h"
-#include "Body.h"
+#include "mainScene.h"
 
 // #define USE_AUDIO_ENGINE 1
 
@@ -108,23 +108,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    //auto scene = HelloWorld::createScene();
-    srand(time(NULL));
-    Body bodys[BODYNUMS];
-    // run
-    director->runWithScene(scene_);
-    while (1)
-    {
-        for (int i = 0; i < BODYNUMS; i++)
-        {
-            bodys[i].move();
-            for (int j = 0; j < BODYNUMS; j++)
-            {
-                if (i != j) Body::gravitation(bodys[i], bodys[j]);
-            }
-            bodys[i].show();
-        }
-    }
+    auto scene = PlanetSimulator::createScene();
+    director->runWithScene(scene);
     return true;
 }
 

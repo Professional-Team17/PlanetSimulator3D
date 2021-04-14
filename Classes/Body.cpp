@@ -49,7 +49,7 @@ void Body::show()
 {
 	if (m > 0)
 	{
-		planet->runAction(MoveTo::create(T, Vec3(x, y, z)));
+		seq.(MoveTo::create(T, Vec3(x, y, z)));
 		std::list<int>::iterator itx1 = listx.begin(), itx2 = itx1, ity1 = listy.begin(), ity2 = ity1, itz1 = listz.begin(), itz2 = itz1;
 		++itx2;
 		++ity2;
@@ -93,7 +93,7 @@ void Body::gravitation(Body& a, Body& b)
 				b.vx = 0;
 				b.vy = 0;
 				b.vz = 0;
-				scene->removeChild(b.planet);
+				//scene->removeChild(b.planet);
 			}
 			else
 			{
@@ -107,7 +107,7 @@ void Body::gravitation(Body& a, Body& b)
 				a.vx = 0;
 				a.vy = 0;
 				a.vz = 0;
-				scene->removeChild(a.planet);
+				//scene->removeChild(a.planet);
 			}
 		}
 	}
